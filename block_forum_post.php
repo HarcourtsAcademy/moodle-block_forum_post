@@ -53,12 +53,14 @@ class block_forum_post extends block_base {
             return $this->content;
         }
 
+        $this->page->requires->js('/blocks/forum_post/javascript.js');
+
         $this->content = new stdClass();
 
         $form = '<form id="forumpostform" autocomplete="off" action="post.php" method="post" accept-charset="utf-8" class="mform" onsubmit="">';
 		$form.= '<div class="controls">';
-        $form.= '<label for="forum-post-subject">Subject</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="Type the subject…" required>';
-		$form.= '<label for="forum-post-message">Message</label><textarea class="span12" id="forum-post-message" name="message" rows="5" spellcheck="true" placeholder="Type the message…" required></textarea>';
+        $form.= '<label for="forum-post-subject">Subject</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="Type the subject…" required onblur="validate_mod_forum_post_form_subject(this)" onchange="validate_mod_forum_post_form_subject(this)">';
+		$form.= '<label for="forum-post-message">Message</label><textarea class="span12" id="forum-post-message" name="message[text]" rows="5" spellcheck="true" placeholder="Type the message…" required onblur="validate_mod_forum_post_form_message_5btext_5d(this)" onchange="validate_mod_forum_post_form_message_5btext_5d(this)"></textarea>';
         $form.= '</div>';
 		$form.= '<div class="form-submit">';
         $form.= '<input name="submitbutton" value="Post to forum" type="submit" id="submitbutton" class="btn-block">';
