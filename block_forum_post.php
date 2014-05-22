@@ -27,7 +27,17 @@ defined('MOODLE_INTERNAL') || die();
 class block_forum_post extends block_base {
 
     function init() {
-        $this->title = get_string('pluginname', 'block_forum_post');
+        $this->title = get_string('blocktitle', 'block_forum_post');
+    }
+
+    public function specialization() {
+
+        global $CFG, $USER, $COURSE;
+
+        if (!empty($this->config->title)) {
+            $this->title = $this->config->title;
+        }
+
     }
 
     function get_content() {

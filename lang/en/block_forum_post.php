@@ -24,9 +24,11 @@
  */
 
 $string['pluginname'] = 'Forum post';
+$string['forum_post'] = 'Forum post';
+$string['blocktitle'] = 'Forum post';
+
 $string['forum_post:addinstance'] = 'Add a Forum post block';
-//$string['blockstring'] = 'Block string';
-//$string['descconfig'] = 'Description of the config section';
+$string['configtitle'] = 'Block title';
 //$string['descfoo'] = 'Config description';
 //$string['headerconfig'] = 'Config section header';
 //$string['labelfoo'] = 'Config label';
