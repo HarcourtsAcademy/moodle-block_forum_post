@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Academy block for posting to a course forum
+ * Block for posting to a course forum
  *
- * @package    block_academy_forum_post
+ * @package    block_forum_post
  * @copyright  Tim Butler <tim.butler@harcourts.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

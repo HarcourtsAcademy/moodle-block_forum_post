@@ -17,7 +17,7 @@
 /**
  * Version details
  *
- * @package    block_academy_forum_post
+ * @package    block_forum_post
  * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,5 +27,5 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->release   = 'v0.1';                        // In development
 $plugin->version   = 2014052200;                    // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2013051400;                    // Requires this Moodle version
-$plugin->component = 'block_academy_forum_post';    // Full name of the plugin (used for diagnostics)
+$plugin->component = 'block_forum_post';    // Full name of the plugin (used for diagnostics)
 $plugin->maturity  = MATURITY_ALPHA;
