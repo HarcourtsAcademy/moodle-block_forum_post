@@ -28,6 +28,7 @@ class block_forum_post extends block_base {
 
     function init() {
         $this->title = get_string('blocktitle', 'block_forum_post');
+        $this->content_type = BLOCK_TYPE_TEXT;
     }
 
     public function specialization() {
@@ -53,28 +54,23 @@ class block_forum_post extends block_base {
         }
 
         $this->content = new stdClass();
-        $this->content->items = array();
-        $this->content->icons = array();
+
+        $form = '<form id="forumpostform" autocomplete="off" action="post.php" method="post" accept-charset="utf-8" class="mform" onsubmit="try { var myValidator = validate_mod_forum_post_form; } catch(e) { return true; } return myValidator(this);">';
+		$form.= '<div class="controls">';
+        $form.= '<label for="forum-post-subject">Subject</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="Type the subject…">';
+		$form.= '<label for="forum-post-message">Message</label><textarea class="span12" id="forum-post-message" name="message" rows="5" spellcheck="true" placeholder="Type the message…"></textarea>';
+        $form.= '</div>';
+		$form.= '<div class="form-submit">';
+        $form.= '<input name="submitbutton" value="Post to forum" type="submit" id="submitbutton">';
+        $form.= '</div>';
+        $form.= '<form>';
+
+        $this->content->text   = $form;
         $this->content->footer = '';
+
 
         // user/index.php expect course context, so get one if page has module context.
         $currentcontext = $this->page->context->get_course_context(false);
-
-        if (! empty($this->config->text)) {
-            $this->content->text = $this->config->text;
-        }
-
-        $this->content = '';
-        if (empty($currentcontext)) {
-            return $this->content;
-        }
-        if ($this->page->course->id == SITEID) {
-            $this->context->text .= "site context";
-        }
-
-        if (! empty($this->config->text)) {
-            $this->content->text .= $this->config->text;
-        }
 
         return $this->content;
     }
@@ -96,11 +92,4 @@ class block_forum_post extends block_base {
 
     function has_config() {return true;}
 
-    public function cron() {
-            mtrace( "Hey, my cron script is running" );
-             
-                 // do something
-                  
-                      return true;
-    }
 }
