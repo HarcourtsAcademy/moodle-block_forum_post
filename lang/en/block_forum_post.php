@@ -23,9 +23,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Forum Post block';
-$string['forum_post:addinstance'] = 'Add a Forum Post block';
-$string['forum_post:myaddinstance'] = 'Add a Forum Post block to my moodle';
+$string['pluginname'] = 'Forum post';
+$string['forum_post:addinstance'] = 'Add a Forum post block';
 //$string['blockstring'] = 'Block string';
 //$string['descconfig'] = 'Description of the config section';
 //$string['descfoo'] = 'Config description';
