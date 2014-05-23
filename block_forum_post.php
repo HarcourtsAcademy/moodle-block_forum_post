@@ -60,20 +60,11 @@ class block_forum_post extends block_base {
 
         $form = '<form id="forumpostform" autocomplete="off" action="'.$posturl.'" method="post" accept-charset="utf-8" class="mform" onsubmit="">';
         $form.= '<div style="display: none;">';
-//        $form.= '<input name="timestart" type="hidden" value="0">';
-//        $form.= '<input name="timeend" type="hidden" value="0">';
         $form.= '<input name="course" type="hidden" value="49">';
         $form.= '<input name="forum" type="hidden" value="57">';
-//        $form.= '<input name="discussion" type="hidden" value="0">';
-//        $form.= '<input name="parent" type="hidden" value="0">';
         $form.= '<input name="userid" type="hidden" value="2">';
         $form.= '<input name="groupid" type="hidden" value="">';
-//        $form.= '<input name="edit" type="hidden" value="0">';
-//        $form.= '<input name="reply" type="hidden" value="0">';
-//        $form.= '<input name="message[format]" type="hidden" value="'.FORMAT_PLAIN.'">'; // Plain text (even tags are printed in full)
-//        $form.= '<input name="message[itemid]" type="hidden" value="-1">';
         $form.= '<input name="sesskey" type="hidden" value="'.sesskey().'">';
-        $form.= '<input name="_qf__mod_forum_post_form" type="hidden" value="1">';
         $form.= '</div>';
 		$form.= '<div class="controls">';
         $form.= '<label for="forum-post-subject">Subject</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="Type the subject…" required onblur="validate_mod_forum_post_form_subject(this)" onchange="validate_mod_forum_post_form_subject(this)">';
