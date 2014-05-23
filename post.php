@@ -161,8 +161,6 @@ if (!empty($forum)) {      // User is starting a new discussion in a forum
         $post->groupid = groups_get_activity_group($cm);
     }
 
-    $post = trusttext_pre_edit($post, 'message', $modcontext);
-
     // Unsetting this will allow the correct return URL to be calculated later.
     unset($SESSION->fromdiscussion);
 } else {
@@ -243,7 +241,7 @@ if ($discussion->id = forum_add_discussion($discussion)) {
     }
 
     if (get_referer()) {
-        redirect(get_referer(FALSE));
+        redirect(get_referer(FALSE), $message.$subscribemessage, $timemessage);
     } else {
         redirect(forum_go_back_to("/mod/forum/view.php?f=$post->forum"), $message.$subscribemessage, $timemessage);
     }
