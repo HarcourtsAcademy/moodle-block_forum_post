@@ -27,7 +27,8 @@
  * - Record student's post in the completion system
  * - Add link to Moodle post to forum page labelled "Advanced"
  * - copy forum lang strings into forum_post
- * - Prevent multiple posts if the page is refresed
+ * - Prevent multiple posts if the page is refreshed
+ * - Show confirmation message when post was successful
  *
  */
 
@@ -238,7 +239,13 @@ if ($discussion->id = forum_add_discussion($discussion)) {
         $completion->update_state($cm,COMPLETION_COMPLETE);
     }
 
-    redirect(forum_go_back_to("view.php?f=$post->forum"), $message.$subscribemessage, $timemessage);
+    if (get_referer()) {
+        redirect(get_referer(FALSE));
+    } else {
+        redirect(forum_go_back_to("/mod/forum/view.php?f=$post->forum"), $message.$subscribemessage, $timemessage);
+    }
+
+    
 
 } else {
     print_error("couldnotadd", "forum", $errordestination);
