@@ -197,6 +197,7 @@ $post->itemid        = $post->message['itemid'];
 
 // Adding a new discussion.
 // Before we add this we must check that the user will not exceed the blocking threshold.
+$thresholdwarning = forum_check_throttling($forum, $cm);
 forum_check_blocking_threshold($thresholdwarning);
 
 if (!forum_user_can_post_discussion($forum, $post->groupid, -1, $cm, $modcontext)) {
