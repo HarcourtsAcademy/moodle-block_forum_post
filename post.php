@@ -106,6 +106,40 @@ if (!isloggedin() or isguestuser()) {
 
 require_login(0, false);   // Script is useless unless they're logged in
 
+if (empty($subject) or empty($message)) {
+    $returnurl = '';
+    if (get_referer()) {
+        $returnurl = get_referer(FALSE);
+    } else {
+        $returnurl = "/course/view.php?id=$course->id";
+    }
+
+    if (!empty($forum)) {      // User is starting a new discussion in a forum
+        if (! $forum = $DB->get_record('forum', array('id' => $forum))) {
+            print_error('invalidforumid', 'forum');
+        }
+    }
+
+    if (! $course = $DB->get_record('course', array('id' => $forum->course))) {
+        print_error('invalidcourseid');
+    }
+
+    if (!$cm = get_coursemodule_from_instance('forum', $forum->id, $course->id)) { // For the logs
+        print_error('invalidcoursemodule');
+    } else {
+        $modcontext = context_module::instance($cm->id);
+    }
+
+    $PAGE->set_cm($cm, $course, $forum);
+    $PAGE->set_context($modcontext);
+    $PAGE->set_title($course->shortname);
+    $PAGE->set_heading($course->fullname);
+
+    echo $OUTPUT->header();
+    notice("Your forum post needs a subject and a message.", $returnurl, $course);
+    echo $OUTPUT->footer();
+}
+
 if (!empty($forum)) {      // User is starting a new discussion in a forum
     if (! $forum = $DB->get_record("forum", array("id" => $forum))) {
         print_error('invalidforumid', 'forum');
