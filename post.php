@@ -47,6 +47,8 @@ require_once('../../mod/forum/lib.php');
 require_once($CFG->libdir.'/completionlib.php');
 
 $sesskey = required_param('sesskey', PARAM_ALPHANUM);
+$subject = required_param('subject', PARAM_NOTAGS);
+$message = required_param('message', PARAM_NOTAGS);
 $forum   = optional_param('forum', 0, PARAM_INT);
 $groupid = optional_param('groupid', null, PARAM_INT);
 
@@ -147,9 +149,9 @@ if (!empty($forum)) {      // User is starting a new discussion in a forum
     $post->forum         = $forum->id;
     $post->discussion    = 0;           // ie discussion # not defined yet
     $post->parent        = 0;
-    $post->subject       = '';
+    $post->subject       = $subject;
     $post->userid        = $USER->id;
-    $post->message       = '';
+    $post->message       = $message;
     $post->messageformat = editors_get_preferred_format();
     $post->messagetrust  = 0;
 
