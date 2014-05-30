@@ -76,11 +76,11 @@ class block_forum_post extends block_base {
         $form.= '<input name="sesskey" type="hidden" value="'.sesskey().'">';
         $form.= '</div>';
 		$form.= '<div class="controls">';
-        $form.= '<label for="forum-post-subject">Subject</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="Type the subject…" required>';
-		$form.= '<label for="forum-post-message">Message</label><textarea class="span12" id="forum-post-message" name="message" rows="5" spellcheck="true" placeholder="Type the message…" required></textarea>';
+        $form.= '<label for="forum-post-subject">'.get_string('subjectlabel','block_forum_post').'</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="'.get_string('subjectplaceholder','block_forum_post').'" required>';
+		$form.= '<label for="forum-post-message">'.get_string('messagelabel','block_forum_post').'</label><textarea class="span12" id="forum-post-message" name="message" rows="5" spellcheck="true" placeholder="'.get_string('messageplaceholder','block_forum_post').'" required></textarea>';
         $form.= '</div>';
 		$form.= '<div class="form-submit">';
-        $form.= '<input name="submitbutton" value="Post to forum" type="submit" id="submitbutton" class="btn-block">';
+        $form.= '<input name="submitbutton" value="'.get_string('posttoforum','block_forum_post').'" type="submit" id="submitbutton" class="btn-block">';
         $form.= '</div>';
         $form.= '<form>';
 
