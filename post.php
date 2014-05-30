@@ -25,10 +25,10 @@
 /**
  * TODO Development:
  * - Record student's post in the completion system
- * - Add link to Moodle post to forum page labelled "Advanced"
- * - copy forum lang strings into forum_post
  * - Prevent multiple posts if the page is refreshed
- * - Show confirmation message when post was successful
+ * - Convert output to Moodle lang strings
+ * - Add ability to choose the forum to post to
+ * * Show confirmation message when post was successful
  *
  */
 
@@ -39,6 +39,8 @@
  * - Test new post when forum hidden from user
  * - Test new post when user is a guest
  * - Test trainer posting to all groups
+ * - Test special characters in new post
+ * - Test html tags in new post
  *
  */
 
