@@ -42,7 +42,7 @@ class block_forum_post extends block_base {
     }
 
     function get_content() {
-        global $CFG, $OUTPUT;
+        global $CFG, $COURSE, $OUTPUT, $USER;
 
         if ($this->content !== null) {
             return $this->content;
@@ -55,13 +55,17 @@ class block_forum_post extends block_base {
 
         $posturl = new moodle_url($CFG->wwwroot . '/blocks/forum_post/post.php');
 
+        $courseid = $COURSE->id;
+        $forumid = $this->config->forum;
+        $userid = $USER->id;
+
         $this->content = new stdClass();
 
         $form = '<form id="forumpostform" autocomplete="off" action="'.$posturl.'" method="post" accept-charset="utf-8" class="mform" onsubmit="">';
         $form.= '<div style="display: none;">';
-        $form.= '<input name="course" type="hidden" value="49">';
-        $form.= '<input name="forum" type="hidden" value="57">';
-        $form.= '<input name="userid" type="hidden" value="2">';
+        $form.= '<input name="course" type="hidden" value="'.$courseid.'">';
+        $form.= '<input name="forum" type="hidden" value="'.$forumid.'">';
+        $form.= '<input name="userid" type="hidden" value="'.$userid.'">';
         $form.= '<input name="groupid" type="hidden" value="">';
         $form.= '<input name="sesskey" type="hidden" value="'.sesskey().'">';
         $form.= '</div>';

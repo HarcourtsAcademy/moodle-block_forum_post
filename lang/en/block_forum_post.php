@@ -29,6 +29,5 @@ $string['blocktitle'] = 'Forum post';
 
 $string['forum_post:addinstance'] = 'Add a Forum post block';
 $string['configtitle'] = 'Block title';
-//$string['descfoo'] = 'Config description';
-//$string['headerconfig'] = 'Config section header';
-//$string['labelfoo'] = 'Config label';
+$string['configselectforum'] = 'Post to forum';
+$string['confignoforums'] = 'There are no forums in this course. Add a forum to this course then return here to select it.';
