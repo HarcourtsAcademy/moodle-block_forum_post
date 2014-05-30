@@ -59,6 +59,12 @@ class block_forum_post extends block_base {
         $forumid = $this->config->forum;
         $userid = $USER->id;
 
+        // Get the course module.
+        $cm = get_coursemodule_from_instance('forum', $forumid, $courseid);
+
+        // Get the current group id.
+        $currentgroupid = groups_get_activity_group($cm);
+
         $this->content = new stdClass();
 
         $form = '<form id="forumpostform" autocomplete="off" action="'.$posturl.'" method="post" accept-charset="utf-8" class="mform" onsubmit="">';
@@ -66,7 +72,7 @@ class block_forum_post extends block_base {
         $form.= '<input name="course" type="hidden" value="'.$courseid.'">';
         $form.= '<input name="forum" type="hidden" value="'.$forumid.'">';
         $form.= '<input name="userid" type="hidden" value="'.$userid.'">';
-        $form.= '<input name="groupid" type="hidden" value="">';
+        $form.= '<input name="groupid" type="hidden" value="'.$currentgroupid.'">';
         $form.= '<input name="sesskey" type="hidden" value="'.sesskey().'">';
         $form.= '</div>';
 		$form.= '<div class="controls">';
