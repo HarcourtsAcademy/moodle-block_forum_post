@@ -26,7 +26,7 @@
  * TODO Development:
  * * Record student's post in the completion system
  * - Prevent multiple posts if the page is refreshed
- * - Convert output to Moodle lang strings
+ * * Convert output to Moodle lang strings
  * * Add ability to choose the forum to post to
  * * Ensure student posts appear in the forum immediately
  * * Show confirmation message when post was successful
@@ -244,6 +244,7 @@ if (empty($post->groupid)) {
 }
 
 $discussion                 = new stdClass();
+$discussion->course         = $post->course;
 $discussion->forum          = $post->forum;
 $discussion->name           = $post->subject;
 $discussion->message        = $post->message;
