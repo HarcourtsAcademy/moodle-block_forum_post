@@ -59,6 +59,11 @@ class block_forum_post extends block_base {
         $forumid = $this->config->forum;
         $userid = $USER->id;
 
+        if (empty($forumid)) {
+            $this->content = 'No forum configured.';
+            return $this->content;
+        }
+
         // Get the course module.
         $cm = get_coursemodule_from_instance('forum', $forumid, $courseid);
         $modulecontext = context_module::instance($cm->id);
