@@ -24,7 +24,7 @@
 
 /**
  * TODO Development:
- * - Record student's post in the completion system
+ * * Record student's post in the completion system
  * - Prevent multiple posts if the page is refreshed
  * - Convert output to Moodle lang strings
  * * Add ability to choose the forum to post to
@@ -140,7 +140,7 @@ if (empty($subject) or empty($message)) {
     $PAGE->set_heading($course->fullname);
 
     echo $OUTPUT->header();
-    notice("Your forum post needs a subject and a message.", $returnurl, $course);
+    notice(get_string('missingpostdata', 'block_forum_post'), $returnurl, $course);
     echo $OUTPUT->footer();
 }
 

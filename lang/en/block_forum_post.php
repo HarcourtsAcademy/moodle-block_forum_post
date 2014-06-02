@@ -36,3 +36,4 @@ $string['subjectplaceholder'] = 'Type the subject…';
 $string['messagelabel'] = 'Message';
 $string['messageplaceholder'] = 'Type the message…';
 $string['posttoforum'] = 'Post to forum';
+$string['missingpostdata'] = 'Your forum post needs a subject and a message.';
