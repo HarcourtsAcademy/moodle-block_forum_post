@@ -61,6 +61,10 @@ class block_forum_post extends block_base {
 
         // Get the course module.
         $cm = get_coursemodule_from_instance('forum', $forumid, $courseid);
+        $modulecontext = context_module::instance($cm->id);
+
+        // Get the groups the user is in
+        $groups = groups_get_activity_allowed_groups($cm);
 
         // Get the current group id.
         $currentgroupid = groups_get_activity_group($cm);
@@ -72,12 +76,27 @@ class block_forum_post extends block_base {
         $form.= '<input name="course" type="hidden" value="'.$courseid.'">';
         $form.= '<input name="forum" type="hidden" value="'.$forumid.'">';
         $form.= '<input name="userid" type="hidden" value="'.$userid.'">';
-        $form.= '<input name="groupid" type="hidden" value="'.$currentgroupid.'">';
         $form.= '<input name="sesskey" type="hidden" value="'.sesskey().'">';
         $form.= '</div>';
 		$form.= '<div class="controls">';
         $form.= '<label for="forum-post-subject">'.get_string('subjectlabel','block_forum_post').'</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="'.get_string('subjectplaceholder','block_forum_post').'" required>';
 		$form.= '<label for="forum-post-message">'.get_string('messagelabel','block_forum_post').'</label><textarea class="span12" id="forum-post-message" name="message" rows="5" spellcheck="true" placeholder="'.get_string('messageplaceholder','block_forum_post').'" required></textarea>';
+        if (count($groups) > 1 or has_capability('mod/forum:movediscussions', $modulecontext)) {
+            // Ask user to select the group
+            $form.= '<select name="groupid" class="span12">';
+
+            if (has_capability('mod/forum:movediscussions', $modulecontext)) {
+                // Students can't post to all participants.
+                $form.= '  <option value="0">'.get_string('allparticipants').'</option>';
+            }
+
+            foreach ($groups as $group) {
+                $form.= '  <option value="'.$group->id.'">'.$group->name.'</option>';
+            }
+            $form.= '</select>';
+        } else {
+           $form.= '<input name="groupid" type="hidden" value="'.$currentgroupid.'">';
+        }
         $form.= '</div>';
 		$form.= '<div class="form-submit">';
         $form.= '<input name="submitbutton" value="'.get_string('posttoforum','block_forum_post').'" type="submit" id="submitbutton" class="btn-block">';

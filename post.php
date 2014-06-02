@@ -239,6 +239,10 @@ forum_check_blocking_threshold($thresholdwarning);
 if (!forum_user_can_post_discussion($forum, $post->groupid, -1, $cm, $modcontext)) {
     print_error('cannotcreatediscussion', 'forum');
 }
+// If the user has access all groups capability let them choose the group.
+//if (isset($fromform->groupinfo) && has_capability('mod/forum:movediscussions', $modcontext);) {
+//    $fromform->groupid = $fromform->groupinfo;
+//}
 if (empty($post->groupid)) {
     $post->groupid = -1;
 }
@@ -251,6 +255,7 @@ $discussion->message        = $post->message;
 $discussion->messageformat  = FORMAT_PLAIN;
 $discussion->messagetrust   = trusttext_trusted($modcontext);
 $discussion->mailnow        = 0;
+$discussion->groupid        = $post->groupid;
 $discussion->timestart      = 0;
 $discussion->timeend        = 0;
 
