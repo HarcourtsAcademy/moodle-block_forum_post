@@ -117,7 +117,7 @@ class block_forum_post extends block_base {
         }
         $form.= '</div>';
 		$form.= '<div class="form-submit">';
-        $form.= '<input name="submitbutton" value="'.get_string('posttoforum','block_forum_post').'" type="submit" id="submitbutton" class="btn-block">';
+        $form.= '<input name="submitbutton" value="'.get_string('posttoforum','block_forum_post', $forum->name).'" type="submit" id="submitbutton" class="btn-block">';
         $form.= '</div>';
         $form.= '<form>';
 
