@@ -22,30 +22,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/**
- * TODO Development:
- * * Record student's post in the completion system
- * - Prevent multiple posts if the page is refreshed
- * * Convert output to Moodle lang strings
- * * Add ability to choose the forum to post to
- * * Ensure student posts appear in the forum immediately
- * * Show confirmation message when post was successful
- *
- */
-
-
-/**
- * TODO Testing:
- * * Test new post when user not logged in
- * * Test new post when forum hidden from user
- * * Test new post when user is a guest
- * * Test new post by student to teachers only news forum
- * - Test trainer posting to all groups
- * - Test special characters in new post
- * - Test html tags in new post
- *
- */
-
 require_once('../../config.php');
 require_once('../../mod/forum/lib.php');
 require_once($CFG->libdir.'/completionlib.php');
