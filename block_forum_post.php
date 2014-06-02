@@ -42,7 +42,7 @@ class block_forum_post extends block_base {
     }
 
     function get_content() {
-        global $CFG, $COURSE, $OUTPUT, $USER;
+        global $DB, $CFG, $COURSE, $OUTPUT, $USER;
 
         if ($this->content !== null) {
             return $this->content;
@@ -74,6 +74,16 @@ class block_forum_post extends block_base {
 
             // Get the current group id.
             $currentgroupid = groups_get_activity_group($cm);
+        }
+        
+        if (! $forum = $DB->get_record('forum', array('id' => $forumid))) {
+            print_error('invalidforumid', 'forum');
+        }
+
+        // Hid the block when the user cannot post to the forum
+        if (! forum_user_can_post_discussion($forum, $groupid, -1, $cm, $modulecontext)) {
+            $this->content = '';
+            return $this->content;
         }
 
 

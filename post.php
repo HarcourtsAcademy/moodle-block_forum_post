@@ -39,7 +39,7 @@
  * * Test new post when user not logged in
  * * Test new post when forum hidden from user
  * * Test new post when user is a guest
- * - Test new post by student to teachers only news forum
+ * * Test new post by student to teachers only news forum
  * - Test trainer posting to all groups
  * - Test special characters in new post
  * - Test html tags in new post
