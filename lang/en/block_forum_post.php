@@ -37,3 +37,4 @@ $string['messagelabel'] = 'Message';
 $string['messageplaceholder'] = 'Type the message…';
 $string['posttoforum'] = 'Post to {$a}';
 $string['missingpostdata'] = 'Your forum post needs a subject and a message.';
+$string['noforumconfigured'] = 'No forum selected. Configure this block and select a forum to post to.';

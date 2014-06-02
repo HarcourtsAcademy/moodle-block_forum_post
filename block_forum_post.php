@@ -60,7 +60,11 @@ class block_forum_post extends block_base {
         $userid = $USER->id;
 
         if (empty($forumid)) {
-            $this->content = 'No forum configured.';
+            if (has_capability('moodle/block:edit',$this->context)) {
+                $this->content->text = get_string('noforumconfigured', 'block_forum_post');
+            } else {
+                $this->content = '';
+            }
             return $this->content;
         }
 
