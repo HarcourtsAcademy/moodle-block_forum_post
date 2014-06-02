@@ -63,11 +63,19 @@ class block_forum_post extends block_base {
         $cm = get_coursemodule_from_instance('forum', $forumid, $courseid);
         $modulecontext = context_module::instance($cm->id);
 
-        // Get the groups the user is in
-        $groups = groups_get_activity_allowed_groups($cm);
+        $groupmode = groups_get_activity_groupmode($cm);
 
-        // Get the current group id.
-        $currentgroupid = groups_get_activity_group($cm);
+        $groups = '';
+        $currentgroupid = -1;
+
+        // Get the groups the user is in
+        if ($groupmode != NOGROUPS) {
+            $groups = groups_get_activity_allowed_groups($cm);
+
+            // Get the current group id.
+            $currentgroupid = groups_get_activity_group($cm);
+        }
+
 
         $this->content = new stdClass();
 
@@ -81,7 +89,7 @@ class block_forum_post extends block_base {
 		$form.= '<div class="controls">';
         $form.= '<label for="forum-post-subject">'.get_string('subjectlabel','block_forum_post').'</label><input class="span12" name="subject" type="text" value="" id="forum-post-subject" placeholder="'.get_string('subjectplaceholder','block_forum_post').'" required>';
 		$form.= '<label for="forum-post-message">'.get_string('messagelabel','block_forum_post').'</label><textarea class="span12" id="forum-post-message" name="message" rows="5" spellcheck="true" placeholder="'.get_string('messageplaceholder','block_forum_post').'" required></textarea>';
-        if (count($groups) > 1 or has_capability('mod/forum:movediscussions', $modulecontext)) {
+        if (count($groups) > 1) {
             // Ask user to select the group
             $form.= '<select name="groupid" class="span12">';
 
