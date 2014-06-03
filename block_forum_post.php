@@ -59,7 +59,10 @@ class block_forum_post extends block_base {
         $forumid = $this->config->forum;
         $userid = $USER->id;
 
-        if (empty($forumid)) {
+        // Check the forum exists
+        $modinfo = get_fast_modinfo($COURSE); //course mod data
+
+        if (empty($forumid) or empty($modinfo->instances['forum'][$forumid])) {
             if (has_capability('moodle/block:edit',$this->context)) {
                 $this->content->text = get_string('noforumconfigured', 'block_forum_post');
             } else {
