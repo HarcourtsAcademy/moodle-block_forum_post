@@ -93,7 +93,7 @@ class block_forum_post extends block_base {
         }
 
         // Hid the block when the user cannot post to the forum
-        if (! forum_user_can_post_discussion($forum, $groupid, -1, $cm, $modulecontext)) {
+        if (! forum_user_can_post_discussion($forum, $currentgroupid, -1, $cm, $modulecontext)) {
             $this->content = '';
             return $this->content;
         }
