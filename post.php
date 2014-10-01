@@ -205,8 +205,6 @@ if (empty($SESSION->fromurl)) {
     $errordestination = $SESSION->fromurl;
 }
 
-$post->itemid        = $post->message['itemid'];
-
 // Adding a new discussion.
 // Before we add this we must check that the user will not exceed the blocking threshold.
 $thresholdwarning = forum_check_throttling($forum, $cm);
@@ -238,8 +236,16 @@ $discussion->timeend        = 0;
 $message = '';
 if ($discussion->id = forum_add_discussion($discussion)) {
 
-    add_to_log($course->id, "forum", "add discussion",
-            "discuss.php?d=$discussion->id", "$discussion->id", $cm->id);
+    $params = array(
+        'context' => $modcontext,
+        'objectid' => $discussion->id,
+        'other' => array(
+            'forumid' => $forum->id,
+        )
+    );
+    $event = \mod_forum\event\discussion_created::create($params);
+    $event->add_record_snapshot('forum_discussions', $discussion);
+    $event->trigger();
 
     $timemessage = 2;
     if (!empty($message)) { // if we're printing stuff about the file upload

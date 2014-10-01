@@ -53,7 +53,18 @@ class block_forum_post extends block_base {
             return $this->content;
         }
 
+        $this->content = new stdClass();
+
         $posturl = new moodle_url($CFG->wwwroot . '/blocks/forum_post/post.php');
+
+        if (empty($this->config)) {
+            $this->config = new stdClass();
+        }
+
+        if (empty($this->config->forum)) {
+            $this->content->text = get_string('noforumconfigured', 'block_forum_post');
+            return $this->content;
+        }
 
         $courseid = $COURSE->id;
         $forumid = $this->config->forum;
@@ -97,9 +108,6 @@ class block_forum_post extends block_base {
             $this->content = '';
             return $this->content;
         }
-
-
-        $this->content = new stdClass();
 
         $form = '<form id="forumpostform" autocomplete="off" action="'.$posturl.'" method="post" accept-charset="utf-8" class="mform" onsubmit="">';
         $form.= '<div style="display: none;">';
