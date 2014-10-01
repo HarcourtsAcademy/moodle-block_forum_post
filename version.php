@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->release   = 'v0.1';                        // In development
-$plugin->version   = 2014052200;                    // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2013051400;                    // Requires this Moodle version
-$plugin->component = 'block_forum_post';    // Full name of the plugin (used for diagnostics)
-$plugin->maturity  = MATURITY_ALPHA;
+$plugin->release   = 'v2.7.0';                      // In development
+$plugin->version   = 2014100100;                    // The current plugin version (Date: YYYYMMDDXX)
+$plugin->requires  = 2014051200;                    // Requires Moodle version 2.7+
+$plugin->component = 'block_forum_post';            // Full name of the plugin (used for diagnostics)
+$plugin->maturity  = MATURITY_STABLE;
