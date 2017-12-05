@@ -1,6 +1,0 @@
-.block_forum_post .form-submit {
-    text-align: center;
-}
-.block_forum_post .form-submit input {
-    margin-left: 0; /** Override 5px from bootstrap/moodle/buttons.less .btn-lineup */
-}
