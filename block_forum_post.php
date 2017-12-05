@@ -121,7 +121,7 @@ class block_forum_post extends block_base {
         $form.= '</div>';
         $form.= '<div class="form-group">';
 		$form.= '<label for="forum-post-message">'.get_string('messagelabel','block_forum_post').'</label><textarea class="form-control" id="forum-post-message" name="message" rows="5" spellcheck="true" placeholder="'.get_string('messageplaceholder','block_forum_post').'" required></textarea>';
-        if (count($groups) < 1) {
+        if (count($groups) > 1) {
             $form.= '<div class="form-group">';
             // Ask user to select the group
             $form.= '<select name="groupid" class="form-control">';
