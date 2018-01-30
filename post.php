@@ -232,6 +232,7 @@ $discussion->mailnow        = 0;
 $discussion->groupid        = $post->groupid;
 $discussion->timestart      = 0;
 $discussion->timeend        = 0;
+$discussion->pinned         = 0;
 
 $message = '';
 if ($discussion->id = forum_add_discussion($discussion)) {
@@ -255,7 +256,10 @@ if ($discussion->id = forum_add_discussion($discussion)) {
     $message .= '<p>'.get_string("postaddedsuccess", "forum") . '</p>';
     $message .= '<p>'.get_string("postaddedtimeleft", "forum", format_time($CFG->maxeditingtime)) . '</p>';
 
-    if ($subscribemessage = forum_post_subscription($discussion, $forum)) {
+    $fromform = new stdClass();
+    $fromform->discussionsubscribe = true;
+
+    if ($subscribemessage = forum_post_subscription($fromform, $forum, $discussion)) {
         $timemessage = 6;
     }
 
@@ -266,8 +270,8 @@ if ($discussion->id = forum_add_discussion($discussion)) {
         $completion->update_state($cm,COMPLETION_COMPLETE);
     }
 
-    if (get_referer()) {
-        redirect(get_referer(FALSE), $message.$subscribemessage, $timemessage);
+    if (get_local_referer()) {
+        redirect(get_local_referer(FALSE), $message.$subscribemessage, $timemessage);
     } else {
         redirect(forum_go_back_to("/mod/forum/view.php?f=$post->forum"), $message.$subscribemessage, $timemessage);
     }
