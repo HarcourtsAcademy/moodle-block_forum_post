@@ -27,7 +27,8 @@ $string['pluginname'] = 'Forum post';
 $string['forum_post'] = 'Forum post';
 $string['blocktitle'] = 'Forum post';
 
-$string['forum_post:addinstance'] = 'Add a Forum post block';
+$string['forum_post:addinstance'] = 'Add a Forum Post block';
+$string['forum_post:myaddinstance'] = 'Add a Forum Post block to the My Moodle page';
 $string['configtitle'] = 'Block title';
 $string['configselectforum'] = 'Post to forum';
 $string['confignoforums'] = 'There are no forums in this course. Add a forum to this course then return here to select it.';

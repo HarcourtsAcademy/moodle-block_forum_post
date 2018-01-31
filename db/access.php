@@ -38,4 +38,14 @@ $capabilities = array(
 
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
     ),
+
+    'block/forum_post:myaddinstance' => array(
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => array(
+            'user' => CAP_PROHIBIT
+        ),
+
+        'clonepermissionsfrom' => 'moodle/my:manageblocks'
+    ),
 );
